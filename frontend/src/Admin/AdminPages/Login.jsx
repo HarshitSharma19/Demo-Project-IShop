@@ -2,8 +2,10 @@ import React from 'react'
 import {useNavigate} from "react-router-dom"
 import undraw from '../../Images/undraw_login_re_4vu2.svg'
 import axios from 'axios';
-
+import { useDispatch } from "react-redux/es/exports";
+import Actions from '../../React Redux/Action';
 export default function Login() {
+  const Dispatch = useDispatch();
   const Navigate = useNavigate();
   function formhandler(event){
     const email = event.target.email.value;
@@ -19,8 +21,10 @@ export default function Login() {
         }
       }).then((success) => {
         const a = success.data
-        console.log(a.token)
-        Navigate("/admin-panel")
+        Dispatch(Actions.adminAuth(a.token))
+        if(success.data.status === 1){
+          Navigate("/admin-panel")
+        }
       }).catch((error) => {
         console.log(error)
       })

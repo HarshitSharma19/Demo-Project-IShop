@@ -3,12 +3,14 @@ import StatusBtn from './StatusBtn'
 import HomepageBtn from './HomepageBtn'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux/es/exports'
 export default function ProductList({sno , id , name , image , url , status , home, price , discount , weight , details, event }) {
  
   function Delete(x){
+    const Selector = useSelector((data)=> data.Reducer1)
      axios.delete(`http://localhost:5000/admin-panel/products/view/${x}`,{
       headers: {
-        authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+        authorization: Selector
       }
      }
      ).then((success)=>{

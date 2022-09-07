@@ -3,8 +3,10 @@ import React from 'react'
 import ProductList from './ProductList';
 import { useState,useEffect } from 'react';
 import axios from "axios";
+import { useSelector } from 'react-redux/es/exports';
 
 export default function ViewProducts() {
+  const Selector = useSelector((data)=> data.Reducer1)
   const [data , setData] = useState([]);
   const [url , setUrl] = useState("")
   const [reload , setReload] = useState("")
@@ -20,7 +22,7 @@ export default function ViewProducts() {
   const fetchData = async() => {
     await axios.get("http://localhost:5000/admin-panel/products/view", {
       headers: {
-        authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+        authorization: Selector
       }
     }).then((success) => {
       setUrl(success.data.imgBaseUrl)

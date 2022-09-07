@@ -4,12 +4,14 @@ import HomepageBtn from './HomepageBtn'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
 import swal from 'sweetalert'
+import { useSelector } from 'react-redux/es/exports'
 
 export default function CategoryList({sno , id , name , image , url , status , created , home, event}) {
+  const Selector = useSelector((data)=> data.Reducer1)
   function Delete(x){
     axios.delete(`http://localhost:5000/admin-panel/category/view/${x}`,{
       headers: {
-        authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+        authorization: Selector
      }
     }).then((success)=>{
       //console.log(success)
