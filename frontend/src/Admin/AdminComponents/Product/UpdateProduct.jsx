@@ -1,17 +1,19 @@
 import axios from 'axios';
 import React, { useState } from 'react'
 import { useEffect } from 'react';
+import { useSelector } from 'react-redux/es/exports';
 import { useParams } from 'react-router-dom'
 import Dropzone from '../Dropzone'
 
 export default function UpdateProduct() {
+          const Selector = useSelector((data)=> data.Reducer1)
           const [img, setImg] = useState("")
           const param = useParams();
           const id = param.id;
           async function fetchData(){
               await axios.get(`http://localhost:5000/admin-panel/products/update/${id}`, {
                   headers: {
-                    authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+                    authorization: Selector
                   }
               }).then((success) => {
                   console.log(success)
@@ -43,7 +45,7 @@ export default function UpdateProduct() {
                     dataS,
                     {
                         headers: {
-                            authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+                            authorization: Selector
                         }
                     }).then((success)=>{
                       console.log(success)

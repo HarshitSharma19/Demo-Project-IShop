@@ -4,8 +4,10 @@ import { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import Dropzone from '../Dropzone'
 import swal from 'sweetalert';
+import { useSelector } from 'react-redux/es/exports';
 import { useNavigate } from 'react-router-dom';
 export default function UpdateBrand() {
+    const Selector = useSelector((data)=>data.Reducer1)
     const Navigate = useNavigate();
     // const [data , setData] = useState([])
     const [img, setImg] = useState("")
@@ -14,7 +16,7 @@ export default function UpdateBrand() {
     async function fetchData(){
         await axios.get(`http://localhost:5000/admin-panel/brand/update/${id}`, {
             headers: {
-              authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+              authorization: Selector
             }
         }).then((success) => {
             console.log(success)
@@ -38,7 +40,7 @@ export default function UpdateBrand() {
         dataS,
         {
             headers: {
-                authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+                authorization: Selector
             }
         }).then((success)=>{
             swal({

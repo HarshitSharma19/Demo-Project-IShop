@@ -4,7 +4,9 @@ import axios from "axios";
 import { useState } from 'react'
 import BrandList from './BrandList.jsx'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux/es/exports';
 export default function ViewBrand() {
+  const Selector = useSelector((data)=> data.Reducer1)
   const [data , setData] = useState([]);
   const [url , setUrl] = useState("")
   const [reload , setReload] = useState("")
@@ -21,7 +23,7 @@ export default function ViewBrand() {
   const fetchData = async() => {
     await axios.get("http://localhost:5000/admin-panel/brand/view", {
       headers: {
-        authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+        authorization: Selector
       }
     }).then((success) => {
       setUrl(success.data.imgBaseUrl)
