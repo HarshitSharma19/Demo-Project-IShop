@@ -104,7 +104,7 @@ class CategoryController {
     }
     updateCategory = (id, Data , imgFile) => {
         return new Promise(async (resolve, reject) => {
-            const Dir1 = path.join(dirName , "Public/Brand/")
+            const Dir1 = path.join(dirName , "Public/Category/")
             const imgName = Math.floor( Math.random() *1000000) + new Date().getTime() + imgFile.name
             const destination = Dir1 + imgName;
             const data = { ...Data , image: imgName }
