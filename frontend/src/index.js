@@ -2,7 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-
+// import { AppStore } from './Store';
+// import Provider from "react-redux"
 import reportWebVitals from './reportWebVitals';
 
 import { BrowserRouter } from 'react-router-dom';
@@ -10,9 +11,11 @@ import { BrowserRouter } from 'react-router-dom';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <BrowserRouter basename='/'>
-      <App/>
-    </BrowserRouter>  
+    {/* <Provider store={AppStore}> */}
+      <BrowserRouter basename='/'>
+        <App/>
+      </BrowserRouter> 
+    {/* </Provider>  */}
   </React.StrictMode>
   );
   
