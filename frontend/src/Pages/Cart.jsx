@@ -10,7 +10,7 @@ export default function Cart() {
   return (
     <>
       <Container>
-        <div className="w-full  z-10 right-0 h-full overflow-x-hidden transform translate-x-0 transition ease-in-out duration-700" id="checkout">
+        <div className="w-full  z-10 right-0 h-full  " id="checkout">
           <div className="flex md:flex-row flex-col justify-end" id="cart">
             <div className="lg:w-1/2 w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 text-center py-8 bg-white overflow-y-auto overflow-x-hidden h-screen" >
 
@@ -43,7 +43,8 @@ export default function Cart() {
               </div>
               <div className="md:flex items-center py-8 border-t border-gray-200">
                 <div className="w-1/4">
-                  <img src={Applemac} alt="" className="w-full h-full object-center object-cover" />
+                  <img src={Applemac} alt="productImage" className="w-full h-full object-center object-cover" />
+
                 </div>
                 <div className="md:pl-3 md:w-3/4 w-full">
 

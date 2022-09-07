@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import axios from "axios"
+import Reg from '../Images/Reg.png'
 export default function Registeration() {
 
   const formHandler = (event) => {
@@ -23,39 +24,39 @@ export default function Registeration() {
   return (
     <>
 
-      <div className="flex min-h-full   items-center justify-center py-10 px-4 sm:px-6 lg:px-8">
-        <div className="w-full shadow-2xl shadow-black max-w-md space-y-8">
-          <div className='mb-[10%]'>
+      <div className="flex min-h-full   items-center justify-center py-5 px-4 sm:px-6 lg:px-8">
+        <div className="w-full shadow md:shadow-black shadow-black max-w-md space-y-8">
+          <div className=''>
             <img
-              className="mx-auto h-12 w-auto"
-              src=""
+              className="md:mx-auto w-[100px] m-auto sm:h-[50px]  sm:w-[50px]"
+              src={Reg}
               alt=""
             />
-            <h2 className=" text-center text-3xl font-bold tracking-tight text-gray-900">
+            <h2 className=" border border-black text-center text-2xl font-bold tracking-tight text-gray-900">
               Register your account
             </h2>
 
           </div>
           {/* form start */}
-          <form className="mt-8 space-y-6  " onSubmit={formHandler}>
+          <form className="  " onSubmit={formHandler}>
             <input required type="hidden" name="remember" defaultValue="true" />
-            <div className="mt-4 p-5 ">
-              <div className='' >
+            <div className=" p-5 border border-black ">
+              <div className='mt-0' >
                 <label className="block" >Name</label>
                 <input required type="text" placeholder="Name" name='name'
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
               </div>
-              <div className="mt-4">
+              <div className="mt-2">
                 <label className="block">Contact</label>
                 <input required type="number" placeholder="contact" name='contact'
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
               </div>
-              <div className="  mt-4">
+              <div className="  mt-2">
                 <label className="block">Email</label>
                 <input required type="text" placeholder="Email" name='email'
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
               </div>
-              <div className="mt-4">
+              <div className="mt-2">
                 <label className="block">Password</label>
                 <input required type="password" placeholder="Password" name='password'
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />

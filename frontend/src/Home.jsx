@@ -63,8 +63,7 @@ import AboutUs from "./Pages/About_Us.jsx"
     <Route element={<UserLoginPage />} path="/user/login" />    
     <Route element={<PrivacyPolicy />} path="/privacypolicy" />    
   </Routes>
-        
-  {pathname !== "/user-login" && pathname !== "/user-signup" ? (
+  {pathname !== "/user/login" && pathname !== "/user/signup" ? (
         <>
          {pathname !== "/aboutus"  && pathname !== "/privacypolicy"  && pathname !== "/termsconditions"?(<>
             
