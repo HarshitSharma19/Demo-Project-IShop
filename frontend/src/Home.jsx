@@ -33,7 +33,7 @@ import AboutUs from "./Pages/About_Us.jsx"
       <>
         <ScrollToTop />
         <Top />
-        {pathname !== "/user-login" && pathname !== "/user-signup" && pathname !== "/aboutus"  && pathname !== "/termsconditions" && pathname !== "/privacypolicy" ? (
+        { pathname !== "/aboutus"  && pathname !== "/termsconditions" && pathname !== "/privacypolicy" ? (
           <>
             
             <Navbar />
@@ -58,11 +58,11 @@ import AboutUs from "./Pages/About_Us.jsx"
     <Route element={<Checkout />} path="/checkout"/>
     <Route element={<Offers />} path="/offers"/>
     <Route element={<Registration />} path="/user/register" />
-    <Route element={<UserLoginPage />} path="/user-login" />    
+    <Route element={<UserLoginPage />} path="/user/login" />    
     <Route element={<PrivacyPolicy />} path="/privacypolicy" />    
 
   </Routes>
-  {pathname !== "/user-login" && pathname !== "/user-signup" ? (
+  {pathname !== "/user/login" && pathname !== "/user/signup" ? (
         <>
          {pathname !== "/aboutus"  && pathname !== "/privacypolicy"  && pathname !== "/termsconditions"?(<>
             

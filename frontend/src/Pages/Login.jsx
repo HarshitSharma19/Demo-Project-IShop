@@ -1,15 +1,15 @@
-// import { LockClosedIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
+import LogIn from '../Images/Login.png'
 export default function Login() {
   return (
     <>
  
-      <div className="flex min-h-full shadow shadow-black    stroke-fuchsia-600  items-center w-[600px] m-auto mt-[100px]   justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div className="w-full  max-w-md  space-y-8">
-          <div className='mb-[10%]'>
+      <div className="md:flex md:min-h-full  shadow md:shadow-black shadow-black     stroke-fuchsia-600  items-center md:w-[600px] w-[400px] m-auto mt-[20px]   justify-center py-12 px-4 sm:px-6 lg:px-8">
+        <div className="md:w-full  md:max-w-md  md:space-y-8">
+          <div className='mb-[5%]'>
             <img
-              className="mx-auto h-12 w-auto"
-              src=""
+              className="md:mx-auto w-[100px] m-auto md:h-[150px]  md:w-[150px]"
+              src={LogIn}
               alt=""
             />
             <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
@@ -30,7 +30,7 @@ export default function Login() {
                   type="email"
                   autoComplete="email"
                   required
-                  className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  className="md:relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Email address"
                 />
               </div>
@@ -44,7 +44,7 @@ export default function Login() {
                   type="password"
                   autoComplete="current-password"
                   required
-                  className="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
+                  className="md:relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
                   placeholder="Password"
                 />
               </div>
@@ -79,9 +79,6 @@ export default function Login() {
                 type="submit"
                 className="group relative flex w-60 m-auto justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
               >
-                <span className="absolute inset-y-0 left-0 flex items-center pl-3">
-                  {/* <LockClosedIcon className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400" aria-hidden="true" /> */}
-                </span>
                 Sign in
               </button>
             </div>
