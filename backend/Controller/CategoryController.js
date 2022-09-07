@@ -109,12 +109,7 @@ class CategoryController {
             const destination = Dir1 + imgName;
             const data = { ...Data , logo: imgName }
             try{
-                imgFile.mv(destination,(error)=>{
-                    reject({
-                        msg: "Cannot Get File",
-                        status: 0
-                    })
-                })
+                imgFile.mv(destination)
                 const saveData = await CategoryModel.findByIdAndUpdate(id, data)
                 saveData.save();
                 resolve({

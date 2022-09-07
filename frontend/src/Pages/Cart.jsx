@@ -17,7 +17,7 @@ export default function Cart() {
               <p className="text-5xl font-black  m-auto  text-gray-800  ">Cart</p>
               <div className="md:flex items-center mt-14 py-8 border-t border-gray-200">
                 <div className="w-1/4">
-                  <img src={Philips} alt className="w-full h-full object-center object-cover" />
+                  <img src={Philips} alt="" className="w-full h-full object-center object-cover" />
                 </div>
                 <div className="md:pl-3 md:w-3/4">
 
@@ -43,7 +43,7 @@ export default function Cart() {
               </div>
               <div className="md:flex items-center py-8 border-t border-gray-200">
                 <div className="w-1/4">
-                  <img src={Applemac} alt className="w-full h-full object-center object-cover" />
+                  <img src={Applemac} alt="" className="w-full h-full object-center object-cover" />
                 </div>
                 <div className="md:pl-3 md:w-3/4 w-full">
 
@@ -69,7 +69,7 @@ export default function Cart() {
               </div>
               <div className="md:flex items-center py-8 border-t border-b border-gray-200">
                 <div className="h-full w-1/4">
-                  <img src={AppleWatch} alt className="w-full h-full object-center object-cover" />
+                  <img src={AppleWatch} alt="" className="w-full h-full object-center object-cover" />
                 </div>
                 <div className="md:pl-3 md:w-3/4 w-full">
 
@@ -94,7 +94,7 @@ export default function Cart() {
                 </div>
               </div>
             </div>
-            <div className="xl:w-1/2 md:w-1/3 xl:w-1/4 w-full bg-gray-100 h-full">
+            <div className="md:w-1/3 xl:w-1/4 w-full bg-gray-100 h-full">
               <div className="flex flex-col md:h-screen px-14 py-20 justify-between overflow-y-auto">
                 <div>
                   <p className="text-4xl font-black leading-9 text-gray-800">Summary</p>
