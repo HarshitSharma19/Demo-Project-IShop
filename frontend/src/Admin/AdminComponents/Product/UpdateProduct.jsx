@@ -26,7 +26,6 @@ export default function UpdateProduct() {
           function getValue(x) {
               setImg(x)
           }
-
           function formHandler(event){
                     const name = event.target.name.value;
                     const details = event.target.details.value;

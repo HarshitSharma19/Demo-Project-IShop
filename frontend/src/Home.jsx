@@ -34,7 +34,7 @@ import AboutUs from "./Pages/About_Us.jsx"
       <>
         <ScrollToTop />
         <Top />
-        {pathname !== "/user-login" && pathname !== "/user-signup" && pathname !== "/aboutus"  && pathname !== "/termsconditions" && pathname !== "/privacypolicy" ? (
+        {pathname !== "/user/login" && pathname !== "/user/signup" && pathname !== "/aboutus"  && pathname !== "/termsconditions" && pathname !== "/privacypolicy" ? (
           <>
             
             <Navbar />
@@ -42,28 +42,27 @@ import AboutUs from "./Pages/About_Us.jsx"
         ) : (
           ""
         )}
-        
-              <Routes>
-                  <Route path="*" element={<Error />} />
-                  <Route path="/aboutus" element={<AboutUs />} />
-                  <Route element={<MainPage />} path="/"/>
-                  <Route element={<Mobiles />} path="/mobiles"/>
-                  <Route element={<Store />} path="/store"/>
-                  <Route element={<Laptop />} path="/laptops"/>
-                  <Route element={<Accessories />} path="/accessories"/>
-                  <Route element={<Cart />} path="/cart"/>
-                  <Route element={<PrivacyPolicy />} path="/privacypolicy"/>
-                  <Route element={<Profile />} path="/profile"/>
-                  <Route element={<Tablets />} path="/tablets"/>
-                  <Route element={<TermConditions />} path="/termsconditions"/>
-                  {/*<Route element={<Watches />} path="/watches"/> */}
-                  <Route element={<Checkout />} path="/checkout"/>
-                  <Route element={<Offers />} path="/offers"/>
-                  <Route element={<Registration />} path="/user/register" />
-                  <Route element={<UserLoginPage />} path="/user-login" />    
-                  <Route element={<PrivacyPolicy />} path="/privacypolicy" />    
 
-              </Routes>
+  <Routes>
+    <Route path="*" element={<Error />} />
+    <Route path="/aboutus" element={<AboutUs />} />
+    <Route element={<MainPage />} path="/"/>
+    <Route element={<Mobiles />} path="/mobiles"/>
+    <Route element={<Store />} path="/store"/>
+    <Route element={<Laptop />} path="/laptops"/>
+    <Route element={<Accessories />} path="/accessories"/>
+    <Route element={<Cart />} path="/cart"/>
+    <Route element={<PrivacyPolicy />} path="/privacypolicy"/>
+    <Route element={<Profile />} path="/profile"/>
+    <Route element={<Tablets />} path="/tablets"/>
+     <Route element={<TermConditions />} path="/termsconditions"/>
+    {/*<Route element={<Watches />} path="/watches"/> */}
+    <Route element={<Checkout />} path="/checkout"/>
+    <Route element={<Offers />} path="/offers"/>
+    <Route element={<Registration />} path="/user/register" />
+    <Route element={<UserLoginPage />} path="/user/login" />    
+    <Route element={<PrivacyPolicy />} path="/privacypolicy" />    
+  </Routes>
         
   {pathname !== "/user-login" && pathname !== "/user-signup" ? (
         <>

@@ -13,7 +13,7 @@ export default function Registeration() {
         Contact: contact,
         Email: email,
         Password: password
-      }).then((success) => {
+      }).then((success) => { 
         console.log(success)
       }).catch((error) => {
         console.log(error)

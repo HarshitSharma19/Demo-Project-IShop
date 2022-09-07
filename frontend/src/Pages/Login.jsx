@@ -1,6 +1,25 @@
 // import { LockClosedIcon } from '@heroicons/react/20/solid'
 import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import axios from 'axios'
 export default function Login() {
+  const Navigate = useNavigate();
+  const formHandler = (event) => {
+    const email = event.target.email.value
+    const password = event.target.password.value
+    axios.post("http://localhost:5000/user/login",
+      { 
+        
+        Email: email,
+        Password: password
+      }).then((success) => { 
+        console.log(success)
+        Navigate("/");
+      }).catch((error) => {
+        console.log(error)
+      })
+    event.preventDefault()
+  }
   return (
     <>
  
@@ -17,7 +36,7 @@ export default function Login() {
             </h2>
 
           </div>
-          <form className="mt-8 space-y-6" action="#" method="POST">
+          <form className="mt-8 space-y-6" onSubmit={formHandler}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="-space-y-px rounded-md shadow-sm">
               <div>
