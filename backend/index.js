@@ -10,6 +10,9 @@ import { AdminCategoryOperation } from "./Routes/AdminCategoryOperation.js";
 import { AdminProductOperation } from "./Routes/AdminProductOperation.js";
 import { Middleware } from "./Middleware/Middleware.js";
 import { AdminBrandOperation } from "./Routes/AdminBrandOperation.js"
+import { UserBrandOperation } from "./Routes/UserBrandOperation.js";
+import { UserCategoryOperation } from "./Routes/UserCategoryOperation.js";
+import { UserProductOperation } from "./Routes/UserProductOperation.js";
 /*-----*/
 import { dirName } from "./dirName.js";
 import path from "path";
@@ -50,6 +53,9 @@ if (ConnStatus) {
 
     /*USER LOGIN PENDING*/
     App.use("/user", UserLogin)
+    App.use("/user/brand", UserBrandOperation)
+    App.use("/user/category", UserCategoryOperation)
+    App.use("/user/product", UserProductOperation)
     /*USER LOGIN DONE*/
 
     App.listen(process.env.PORT, () => {

@@ -107,14 +107,9 @@ class CategoryController {
             const Dir1 = path.join(dirName , "Public/Brand/")
             const imgName = Math.floor( Math.random() *1000000) + new Date().getTime() + imgFile.name
             const destination = Dir1 + imgName;
-            const data = { ...Data , logo: imgName }
+            const data = { ...Data , image: imgName }
             try{
-                imgFile.mv(destination,(error)=>{
-                    reject({
-                        msg: "Cannot Get File",
-                        status: 0
-                    })
-                })
+                imgFile.mv(destination)
                 const saveData = await CategoryModel.findByIdAndUpdate(id, data)
                 saveData.save();
                 resolve({
