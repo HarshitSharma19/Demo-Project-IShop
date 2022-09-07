@@ -3,7 +3,10 @@ import React, { useState } from 'react'
 import { useEffect } from 'react';
 import { useParams } from 'react-router-dom'
 import Dropzone from '../Dropzone'
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
 export default function UpdateBrand() {
+    const Navigate = useNavigate();
     // const [data , setData] = useState([])
     const [img, setImg] = useState("")
     const param = useParams();
@@ -38,10 +41,16 @@ export default function UpdateBrand() {
                 authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
             }
         }).then((success)=>{
-            console.log(success)
-          }).catch((error)=>{
+            swal({
+                title: "Success",
+                text: success.data.msg,
+                icon: "success",
+                button: "ok",
+              })
+              Navigate("/admin-panel/brand/view")
+        }).catch((error) => {
             console.log(error)
-          })
+        })
         event.preventDefault();
     }
   return (

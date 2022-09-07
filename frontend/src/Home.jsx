@@ -26,6 +26,7 @@ import Registration from "./Pages/Registeration.jsx";
 import UserLoginPage from "./Pages/Login.jsx";
 import AboutUs from "./Pages/About_Us.jsx" 
 
+
   export default function Home() {
     let { pathname } = useLocation();
     console.log(pathname)
@@ -41,6 +42,7 @@ import AboutUs from "./Pages/About_Us.jsx"
         ) : (
           ""
         )}
+
   <Routes>
     <Route path="*" element={<Error />} />
     <Route path="/aboutus" element={<AboutUs />} />
@@ -60,8 +62,8 @@ import AboutUs from "./Pages/About_Us.jsx"
     <Route element={<Registration />} path="/user/register" />
     <Route element={<UserLoginPage />} path="/user/login" />    
     <Route element={<PrivacyPolicy />} path="/privacypolicy" />    
-
   </Routes>
+        
   {pathname !== "/user-login" && pathname !== "/user-signup" ? (
         <>
          {pathname !== "/aboutus"  && pathname !== "/privacypolicy"  && pathname !== "/termsconditions"?(<>

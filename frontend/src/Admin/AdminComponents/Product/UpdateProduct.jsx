@@ -47,9 +47,9 @@ export default function UpdateProduct() {
                         }
                     }).then((success)=>{
                       console.log(success)
-                    }).catch((error)=>{
+                  }).catch((error) => {
                       console.log(error)
-                    })
+                  })
                     event.preventDefault();
                 }
          return (
