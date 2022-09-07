@@ -16,7 +16,7 @@ export default function ProductList({sno , id , name , image , url , status , ho
       event(success.data)
     }).catch((error)=>{
       console.log(error)
-    })
+    }) 
 }
  
   return (

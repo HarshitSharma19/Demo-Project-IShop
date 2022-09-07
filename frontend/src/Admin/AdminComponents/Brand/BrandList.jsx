@@ -11,7 +11,7 @@ export default function BrandList({ name , created , logo , sno , status , id , 
   //         authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
   //      }
   //     }
-  //   ).then((success)=>{
+  //   ).then((success)=>{ 
   //     console.log(success)
   //     event(success.data)
   //   }).catch((error)=>{
