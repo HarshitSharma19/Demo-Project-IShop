@@ -29,12 +29,6 @@ const Schema = mongoose.Schema({
         type: String,
         require: true
     },
-    rating : {
-        type: Number,
-        min: 0,
-        max: 5,
-        require: false
-    },
     homepage: {
         type: Boolean,
         default: false
@@ -42,10 +36,6 @@ const Schema = mongoose.Schema({
     status: {
         type : Boolean,
         default : true
-    },
-    slug: {
-        type : String,
-        unique: false
     }
 })
 /*---------------------------------------------------------*/
