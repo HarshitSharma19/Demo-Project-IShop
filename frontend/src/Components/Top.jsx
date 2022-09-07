@@ -48,11 +48,11 @@ return (
                     </svg>
                     {(status === 1)?
                     <>
-                        <Link to="/profile" >My Profile</Link>
+                        <p><span className='mr-5'><Link to="/profile" >My Profile</Link></span><span><Link to="/">Logut</Link></span></p>
                     </> 
                     : 
                     <>
-                        <p><span className='mr-5'> <Link to="/user/login" >Login</Link></span><span><Link to="/user/register" >SignUp</Link></span></p>
+                        <p><span className='mr-5'><Link to="/user/login" >Login</Link></span><span><Link to="/user/register" >SignUp</Link></span></p>
                     </>
                     }
                 </div>

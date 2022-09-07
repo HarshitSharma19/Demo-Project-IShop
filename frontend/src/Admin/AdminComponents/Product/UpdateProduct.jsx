@@ -26,7 +26,6 @@ export default function UpdateProduct() {
           function getValue(x) {
               setImg(x)
           }
-
           function formHandler(event){
                     const name = event.target.name.value;
                     const details = event.target.details.value;
@@ -46,7 +45,11 @@ export default function UpdateProduct() {
                         headers: {
                             authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
                         }
-                    })
+                    }).then((success)=>{
+                      console.log(success)
+                  }).catch((error) => {
+                      console.log(error)
+                  })
                     event.preventDefault();
                 }
          return (
