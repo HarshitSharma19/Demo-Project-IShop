@@ -1,8 +1,11 @@
 import React from 'react';
 import Dropzone from '../Dropzone';
 import axios from 'axios';
+import swal from 'sweetalert';
 import { useState } from 'react';
+import {useNavigate} from "react-router-dom"
 export default function AddBrand() {
+  const Navigate = useNavigate();
   const [img, setImg] = useState("")
   function getValue(x) {
     setImg(x)
@@ -19,7 +22,15 @@ export default function AddBrand() {
           authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
         }
       }).then((success) => {
-        console.log(success)
+        //console.log(success.data.msg)   
+        swal({
+          title: "Success",
+          text: success.data.msg,
+          icon: "success",
+          button: "ok",
+        });
+        Navigate("/admin-panel/brand/view")
+
       }).catch((error) => {
         console.log(error)
       })

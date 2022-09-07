@@ -3,6 +3,8 @@ import StatusBtn from './StatusBtn'
 import HomepageBtn from './HomepageBtn'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import swal from 'sweetalert'
+
 export default function CategoryList({sno , id , name , image , url , status , created , home, event}) {
   function Delete(x){
     axios.delete(`http://localhost:5000/admin-panel/category/view/${x}`,{
@@ -10,8 +12,14 @@ export default function CategoryList({sno , id , name , image , url , status , c
         authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
      }
     }).then((success)=>{
-      console.log(success)
+      //console.log(success)
       event(success.data)
+      swal({
+        title: "Success",
+        text: success.data.msg,
+        icon: "success",
+        button: "ok",
+      })
     }).catch((error)=>{
       console.log(error)
     })

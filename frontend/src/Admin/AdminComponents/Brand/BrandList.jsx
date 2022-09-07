@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import StatusBtn from './StatusBtn'
+import swal from 'sweetalert'
 export default function BrandList({ name , created , logo , sno , status , id , url , event}) {
   // function Update(y){
   //   axios.get(`http://localhost:5000/admin-panel/brand/update/${y}`,
@@ -25,8 +26,14 @@ export default function BrandList({ name , created , logo , sno , status , id , 
        }
       }
     ).then((success)=>{
-      console.log(success)
+      //console.log(success)
       event(success.data)
+      swal({
+        title: "Success",
+        text: success.data.msg,
+        icon: "success",
+        button: "ok",
+      })
     }).catch((error)=>{
       console.log(error)
     })

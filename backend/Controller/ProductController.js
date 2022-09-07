@@ -108,12 +108,7 @@ class ProductController{
             const destination = Dir1 + imgName;
             const data = { ...Data , image: imgName }
             try{
-                imgFile.mv(destination,(error)=>{
-                    reject({
-                        msg: "Cannot Get File",
-                        status: 0
-                    })
-                })
+                imgFile.mv(destination)
                 const saveData = await ProductModel.findByIdAndUpdate(id , data)
                 saveData.save();
                 resolve({
