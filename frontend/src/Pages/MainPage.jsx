@@ -9,12 +9,19 @@ import OfferBanner from "../Components/OfferBanner.jsx"
 import Card from "../Components/Card.jsx"
 export default function MainPage() {
   const [data , setData] = useState([]);
+
   const [url , setUrl] = useState("") 
+
   
   let Data,filterData;
   try{
+
     filterData = data.filter((a)=>{
     return a.homepage==true   
+
+    Data = data.map((a, i)=>{
+    return <Card  id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
+
     })
     Data = filterData.map((a, i)=>{
       return <Card id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
@@ -50,8 +57,7 @@ export default function MainPage() {
                 </ul>
             </div>
             <div className='w-full flex flex-wrap justify-center mt-10'>
-
-{Data}
+     {Data}
 </div>
     <div className='mt-10 text-center h-20 w-100 cursor-pointer'> <Link to="/store"> <span className='text-blue-600'>Load More</span> </Link></div>
     </Container>

@@ -8,10 +8,15 @@ import { useState,useEffect } from "react";
 export default function Mobiles() {
   const [data , setData] = useState([]);
   const [url , setUrl] = useState("")
+
   let Data,filterData;
   try{
     filterData = data.filter((a)=>{
       return a.categoryName == "Mobile"
+
+    Data = data.map((a, i)=>{
+    return <Card id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
+
     })
     Data = filterData.map((a, i)=>{
       return <Card id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>

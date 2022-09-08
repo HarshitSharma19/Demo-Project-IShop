@@ -5,11 +5,20 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux/es/exports'
 import swal from 'sweetalert'
 import { useNavigate } from 'react-router-dom'
+import { useEffect } from 'react'
 
 export default function AddProducts() {
   const Navigate = useNavigate();
   const Selector = useSelector((data)=> data.Reducer1)
   const [img, setImg] = useState("")
+  const [data, setData]=useState([])
+  const [cdata, setCdata]=useState([])
+  const Sdata = data.map((a,i)=>{
+    return <option value={a.name} key={i}>{a.name}</option>
+  })
+  const Cdata = cdata.map((a,i)=>{
+    return <option value={a.name} key={i}>{a.name}</option>
+  })
   function getValue(x){
     setImg(x)
   }
@@ -19,13 +28,17 @@ export default function AddProducts() {
     const price = event.target.price.value;
     const discount = event.target.discount.value;
     const weight = event.target.weight.value;
+    const brandName = event.target.brand.value;
+    const categoryName = event.target.category.value;
     let data = new FormData();
     data.append("name", name);
     data.append("details", details);
     data.append("price", price);
     data.append("discount", discount);
     data.append("weight", weight);
-    data.append("image", img)
+    data.append("image", img);
+    data.append("brandName", brandName)
+    data.append("categoryName", categoryName);
     
     axios.post("http://localhost:5000/admin-panel/products/add",
       data,
@@ -47,6 +60,33 @@ export default function AddProducts() {
       })
       event.preventDefault();
   }
+
+  const selectData = async() =>{
+    await axios.get("http://localhost:5000/admin-panel/brand/view",{
+      headers: {
+        authorization: Selector
+      }
+    })
+    .then((success)=>{
+      setData(success.data.data)
+    }).catch((error)=>{
+      console.log(error)
+    })
+    await axios.get("http://localhost:5000/admin-panel/category/view",{
+      headers: {
+        authorization: Selector
+      }
+    })
+    .then((success)=>{
+      setCdata(success.data.data)
+    }).catch((error)=>{
+      console.log(error)
+    })
+  }
+
+ useEffect(()=>{
+   selectData()
+ },[])
   return (
     <>
       <div className=' flex border-b-2 justify-between px-4 py-2'> 
@@ -77,22 +117,20 @@ export default function AddProducts() {
                 <td>weight</td>
                 <td><input type="number" name='weight' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required /></td>
               </tr>
-              {/* <tr className='h-28'>
+              <tr className='h-28'>
                 <td> 
-                  <select className="w-56 h-8 text-center rounded-md border">
-                    <option value="">--Brand--</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="General Question">General</option>
+                  <select name='brand' className="w-56 h-8 text-center rounded-md border text-black">
+                    <option>Select Brand</option>
+                    {Sdata}
                   </select>
                 </td>
                 <td>
-                  <select className="w-56 h-8 text-center rounded-md border">
-                    <option value="">--Categories--</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="General Question">General</option>
+                  <select name='category' className="w-56 h-8 text-center rounded-md border ">
+                    <option>Select Brand</option>
+                    {Cdata}
                   </select>
                 </td>
-              </tr> */}
+              </tr>
               <tr className='h-26 border-b-2'>
                 <td className='flex items-start mt-4'>Upload Images</td>
                 <td className=' mt-6 pt-4 pb-20'><Dropzone event={getValue}/></td>
