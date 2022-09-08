@@ -69,7 +69,7 @@ export default function UpdateCategory() {
                     <tbody>
                         <tr className='h-16'>
                             <td className='w-48'>Name</td>
-                            <td><input type="text" name='name' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" /> </td>
+                            <td><input type="text" name='name' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required /> </td>
                         </tr>
                         <tr className='h-26 border-b-2'>
                             <td className='flex items-start mt-4'>Upload Image</td>
