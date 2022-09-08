@@ -1,9 +1,22 @@
 import React from 'react'
 import Container from './Container.jsx'
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux/es/exports.js';
+// import { Navigate } from 'react-router-dom';
+import { useDispatch } from "react-redux/es/exports";
+import Actions from '../React Redux/Action';
+// import swal from 'sweetalert';
 
 export default function Top(props) {
+    const Dispatch = useDispatch();
+    const Selector = useSelector((data)=>data.Reducer2)
     let status=0;
+    function Logut()
+    {
+        Dispatch(Actions.reset(""))
+
+      
+    }
 return (
 <Container>
     <div className="container mx-auto">
@@ -46,9 +59,9 @@ return (
                         <path strokeLinecap="round" strokeLinejoin="round"
                             d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                     </svg>
-                    {(status === 1)?
+                    {(Selector.name !== "")?
                     <>
-                        <p><span className='mr-5'><Link to="/profile" >My Profile</Link></span><span><Link to="/">Logut</Link></span></p>
+                        <p><span className='mr-5'>{Selector.name}</span><button onClick={Logut}>Logut</button></p>
                     </> 
                     : 
                     <>

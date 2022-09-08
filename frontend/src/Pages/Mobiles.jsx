@@ -8,18 +8,20 @@ import { useState,useEffect } from "react";
 export default function Mobiles() {
   const [data , setData] = useState([]);
   const [url , setUrl] = useState("")
-  const [reload , setReload] = useState("")
-  let Data;
+  let Data,filterData;
   try{
-    Data = data.map((a, i)=>{
-    return <Card event={setReload} id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
+    filterData = data.filter((a)=>{
+      return a.categoryName == "Mobile"
     })
+    Data = filterData.map((a, i)=>{
+      return <Card id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
+      }) 
     }catch(error){
     Data="NO DATA FOUND"
   } 
-
+  
   const fetchData = async() => {
-    await axios.get("http://localhost:5000/user/product/alldata", { 
+    await axios.get("http://localhost:5000/user/products/alldata", { 
     }).then((success) => {
       setUrl(success.data.imgBaseUrl)
       setData(success.data.data);
@@ -45,7 +47,7 @@ return (
 
       {Data}
       </div>
-    </div>
+    </div> 
   </div>
 </Container>
 )

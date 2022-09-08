@@ -4,7 +4,7 @@ const Reducer1 = (state = init, Actions)=>{
     switch(Actions.type){
         case "AUTH":
             Final = Actions.payload
-            break;
+            break;   
         default:
             Final = state;
             break;

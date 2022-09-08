@@ -1,22 +1,35 @@
 import { Link } from 'react-router-dom'
 import LogIn from '../Images/Login.png'
 import { useNavigate } from 'react-router-dom'
+import swal from 'sweetalert';
+import { useDispatch } from "react-redux/es/exports";
+import Actions from '../React Redux/Action';
 import axios from 'axios'
 export default function Login() {
+  const Dispatch = useDispatch();
   const Navigate = useNavigate();
   const formHandler = (event) => {
     const email = event.target.email.value
     const password = event.target.password.value
     axios.post("http://localhost:5000/user/login",
       { 
-        
         Email: email,
         Password: password
-      }).then((success) => { 
-        console.log(success)
-        Navigate("/");
+      }).then((success) => {
+        const a = success.data
+        Dispatch(Actions.userAuth(a.token , a.name))
+        swal({
+          title: "Success",
+          text: success.data.msg,
+          icon: "success",
+          button: "ok",
+        })
+        if(success.data.status === 1){
+          Navigate("/")
+        }
       }).catch((error) => {
         console.log(error)
+        
       })
     event.preventDefault()
   }
