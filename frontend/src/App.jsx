@@ -8,6 +8,7 @@ import Home from "./Home.jsx"
 
 
 
+
   export default function App() {
      let { pathname } =useLocation();
     // console.log(pathname)
@@ -23,6 +24,7 @@ import Home from "./Home.jsx"
         ) : (
           <>
           <Home/>
+        
         </>
         )}
     </>

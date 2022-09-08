@@ -25,6 +25,7 @@ import Navbar from "./Components/Navbar.jsx"
 import Registration from "./Pages/Registeration.jsx";
 import UserLoginPage from "./Pages/Login.jsx";
 import AboutUs from "./Pages/About_Us.jsx" 
+import ProductView from "./Pages/ProductView.jsx"
 
 
   export default function Home() {
@@ -62,6 +63,7 @@ import AboutUs from "./Pages/About_Us.jsx"
     <Route element={<Registration />} path="/user/register" />
     <Route element={<UserLoginPage />} path="/user/login" />    
     <Route element={<PrivacyPolicy />} path="/privacypolicy" />    
+    <Route element={<ProductView/>} path="/view"/>
   </Routes>
   {pathname !== "/user/login" && pathname !== "/user/signup" ? (
         <>
