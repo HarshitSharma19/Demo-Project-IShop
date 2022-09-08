@@ -29,7 +29,6 @@ import AboutUs from "./Pages/About_Us.jsx"
 
   export default function Home() {
     let { pathname } = useLocation();
-    console.log(pathname)
     return ( 
       <>
         <ScrollToTop />

@@ -4,7 +4,9 @@ import axios from 'axios';
 import swal from 'sweetalert';
 import { useState } from 'react';
 import {useNavigate} from "react-router-dom"
+import { useSelector } from 'react-redux/es/exports';
 export default function AddBrand() {
+  const Selector = useSelector((data)=>data.Reducer1)
   const Navigate = useNavigate();
   const [img, setImg] = useState("")
   function getValue(x) {
@@ -19,7 +21,7 @@ export default function AddBrand() {
       data,
       {
         headers: {
-          authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+          authorization: Selector
         }
       }).then((success) => {
         //console.log(success.data.msg)   

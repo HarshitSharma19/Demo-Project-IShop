@@ -2,8 +2,10 @@ import React from 'react'
 import Dropzone from "../Dropzone"
 import axios from 'axios'
 import { useState } from 'react'
+import { useSelector } from 'react-redux/es/exports'
 
 export default function AddProducts() {
+  const Selector = useSelector((data)=> data.Reducer1)
   const [img, setImg] = useState("")
   function getValue(x){
     setImg(x)
@@ -26,7 +28,7 @@ export default function AddProducts() {
       data,
       {
         headers: {
-          authorization: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyIjp7IkVtYWlsIjoiaGFyc2hpdHNoYXJtYTcyNEBnbWFpbC5jb20iLCJQYXNzd29yZCI6ImhhcnNoaXQxMjMifSwiaWF0IjoxNjYxNDkxNTE2fQ.hw5TIPPnTON4IlgzewFl9WioJk9nrfvRF1BDBAqjvTg"
+          authorization: Selector
         }
       }).then((success) => {
         console.log(success)
