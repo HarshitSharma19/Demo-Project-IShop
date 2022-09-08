@@ -54,7 +54,7 @@ if (ConnStatus) {
     /*USER LOGIN PENDING*/
     App.use("/user", UserLogin)
     App.use("/user/brand", UserBrandOperation)
-    App.use("/user/category", UserCategoryOperation)
+    App.use("/user/category", UserCategoryOperation) 
     App.use("/user/product", UserProductOperation)
     /*USER LOGIN DONE*/
 
