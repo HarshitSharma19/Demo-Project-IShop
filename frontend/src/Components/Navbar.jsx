@@ -20,8 +20,8 @@ const Navbar = () => {
     <Container>
 
 
-      <div className=' md:flex   md:justify-center' >
-        <img className='m-auto  ' src={Logo} alt="" />
+      <div className=' md:flex mt-2   md:justify-center' >
+        <img className='m-auto animate-bounce  ' src={Logo} alt="" />
       </div>
 
       <div className='Navbar hidden md:block    md:font-bold  ' >
@@ -29,7 +29,7 @@ const Navbar = () => {
           <li className='p-6 cursor-pointer  hover:-translate-y-1 hover:scale-110 duration-300  hover:text-blue-500 '><Link to="/"> HOME</Link></li>
           <li className='p-6 cursor-pointer  hover:-translate-y-1 hover:scale-110 duration-300 relative ' >
             <Link to="/store"> STORE</Link>
-            <div className=' w-[550px] m-auto submenu p-5 bg-[#F1F1F1] flex absolute justify-between'>
+            <div className='w-[550px] m-auto submenu p-5 bg-[#F1F1F1] flex absolute justify-between'>
 
               <ul className='  text-left  leading-6  ' >
                 <li className='md:font-bold ' >Accessories</li>
@@ -68,7 +68,7 @@ const Navbar = () => {
           <li className='p-6 cursor-pointer  hover:-translate-y-1 hover:scale-110 duration-300  hover:text-blue-500 ' ><Link to="/offers"> OFFERS</Link></li>
         </ul>
       </div>
-      <div className='  black md:bg-none flex justify-between md:hidden items-center h-30 max-w-[1240px] mx-auto px-4 text-b'>
+      <div className='  black md:bg-none flex justify-between md:hidden items-center h-30 max-w-[1240px] mx-auto px-4 indexing3 text-b'>
         <div onClick={handleNav} className='md:hidden text-[30px] z-10'>
           {!nav ? <AiOutlineMenu /> : <AiOutlineClose />}
         </div>
@@ -77,7 +77,7 @@ const Navbar = () => {
 
           !nav
             ? 'hidden'
-            : 'absolute top-0 left-0 w-full h-screen bg-transparent  backdrop-blur-sm  to-blue-500 flex flex-col justify-center  items-center'
+            : 'absolute top-0 left-0 w-full h-screen bg-transparent  backdrop-blur-sm  to-blue-500 flex flex-col justify-center indexing items-center'
         }>
           <div className='fixed drop-shadow-2xl   w-full  top-0 ' >
             <Top />

@@ -22,3 +22,13 @@ html
     opacity: 0;
     visibility: hidden;
 }
+.indexing{
+    
+    z-index: 2;
+}
+.indexing2{
+    z-index: 1;
+}
+.indexing3{
+    z-index: 3;
+}

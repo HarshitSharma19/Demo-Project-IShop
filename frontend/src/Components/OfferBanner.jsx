@@ -19,7 +19,7 @@ return (
         </button>
       </div>
       <div  >
-      <img  className= ' mt-[-19px]  md:mt-[-65px] md:h-[110%] w-[400px]  md:h-[500px]  ' src={apple6} alt="" />
+      <img  className= ' mt-[-19px]   md:mt-[-65px]  w-[400px]  md:h-[500px]  ' src={apple6} alt="" />
       </div>
     </div>
   </Container>

@@ -10,7 +10,7 @@ return (
   <Container>
     <div className='h-[400px] flex flex-row-reverse opacity-[1] '>
 
-      <img className='w-[570px] h-[100%] ' src={banner} alt="" />
+      <img className='w-[570px] h-[100%] animate-bounce indexing2' src={banner} alt="" />
 
 
     </div>
