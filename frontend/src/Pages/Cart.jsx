@@ -4,18 +4,25 @@ import Container from '../Components/Container.jsx'
 import Philips from '../Images/philips_hue.svg'
 import Applemac from '../Images/apple_macbook.png'
 import AppleWatch from '../Images/watch.png'
+import cart from '../Images/cart.jpg'
 
 
 export default function Cart() {
   return (
     <>
       <Container>
-        <div className="w-full  z-10 right-0 h-full  " id="checkout">
-          <div className="flex md:flex-row flex-col justify-end" id="cart">
+        <div className="w-full  z-10  h-full  " id="checkout">
+          <div className="flex md:flex-row flex-col justify-center" id="cart">
             <div className="lg:w-1/2 w-full md:pl-10 pl-4 pr-10 md:pr-4 md:py-12 text-center py-8 bg-white overflow-y-auto overflow-x-hidden h-screen" >
 
-              <p className="text-5xl font-black  m-auto  text-gray-800  ">Cart</p>
-              <div className="md:flex items-center mt-14 py-8 border-t border-gray-200">
+              <div className='m-auto w-[100px]' >
+                <p className=" text-[30px] font-extrabold text-transparent  bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 flex   ">Cart
+                  <img className='   w-[50px]' src={cart} alt="" />
+                </p>
+
+              </div>
+
+              <div className="md:flex items-center mt-6 py-8 border-t border-gray-200">
                 <div className="w-1/4">
                   <img src={Philips} alt="" className="w-full h-full object-center object-cover" />
                 </div>
@@ -30,11 +37,11 @@ export default function Cart() {
                     </select>
                   </div>
 
-                  <p className="text-xs leading-3 text-gray-600 py-4">Color: Black</p>
+                  <p className="text-xs leading-3  py-4">Color: Black</p>
 
                   <div className="flex items-center justify-between pt-5 pr-6">
                     <div className="flex itemms-center">
-                      <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
+                      
                       <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
                     </div>
                     <p className="text-base font-black leading-none text-gray-800">$9,000</p>
@@ -61,7 +68,7 @@ export default function Cart() {
 
                   <div className="flex items-center justify-between pt-5 pr-6">
                     <div className="flex itemms-center">
-                      <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
+                      
                       <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
                     </div>
                     <p className="text-base font-black leading-none text-gray-800">$9,000</p>
@@ -87,7 +94,7 @@ export default function Cart() {
 
                   <div className="flex items-center justify-between pt-5 pr-6">
                     <div className="flex itemms-center">
-                      <p className="text-xs leading-3 underline text-gray-800 cursor-pointer">Add to favorites</p>
+                      
                       <p className="text-xs leading-3 underline text-red-500 pl-5 cursor-pointer">Remove</p>
                     </div>
                     <p className="text-base font-black leading-none text-gray-800">$9,000</p>

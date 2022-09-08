@@ -24,15 +24,15 @@ export default function Registeration() {
   return (
     <>
 
-      <div className="flex min-h-full   items-center justify-center py-5 px-4 sm:px-6 lg:px-8">
-        <div className="w-full shadow md:shadow-black shadow-black max-w-md space-y-8">
+      <div className="flex min-h-full   items-center justify-center py-5 px-4 ">
+        <div className="w-full shadow md:shadow-black shadow-black max-w-md">
           <div className=''>
             <img
-              className="md:mx-auto w-[100px] m-auto sm:h-[50px]  sm:w-[50px]"
+              className="md:mx-auto  md:w-[150px]  md:h-[150px] m-auto "
               src={Reg}
               alt=""
             />
-            <h2 className=" border border-black text-center text-2xl font-bold tracking-tight text-gray-900">
+            <h2 className="  text-center text-lg font-bold  text-gray-900">
               Register your account
             </h2>
 
@@ -40,7 +40,7 @@ export default function Registeration() {
           {/* form start */}
           <form className="  " onSubmit={formHandler}>
             <input required type="hidden" name="remember" defaultValue="true" />
-            <div className=" p-5 border border-black ">
+            <div className=" p-5  ">
               <div className='mt-0' >
                 <label className="block" >Name</label>
                 <input required type="text" placeholder="Name" name='name'
@@ -48,7 +48,7 @@ export default function Registeration() {
               </div>
               <div className="mt-2">
                 <label className="block">Contact</label>
-                <input required type="number" placeholder="contact" name='contact'
+                <input required type="number" placeholder="Contact" name='contact'
                   className="w-full px-4 py-2 mt-2 border rounded-md focus:outline-none focus:ring-1 focus:ring-blue-600" />
               </div>
               <div className="  mt-2">
@@ -66,14 +66,14 @@ export default function Registeration() {
 
 
             <div className="text-sm flex justify-center">
-              <Link to="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+              <Link to="/" className="font-medium mb-2 text-indigo-600 hover:text-indigo-500">
                 Go to Home page
               </Link>
             </div>
             <div className='flex' >
               <button
                 type="submit"
-                className=" w-[300px] m-auto mb-5 justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
+                className=" w-[300px] m-auto mb-1 justify-center rounded-md border border-transparent bg-indigo-600 py-2 px-4 text-sm font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                 Create Account
               </button>
             </div>
