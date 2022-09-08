@@ -4,7 +4,7 @@ import { ProductController } from "../Controller/ProductController.js";
 /*---------------------------------------------------------*/
 
 const UserProductOperation = Express.Router();
-
+ 
 /*READ Opr*/
 UserProductOperation.get("/alldata",async(req , res)=>{
     await new ProductController().getProduct().then((success)=>{
