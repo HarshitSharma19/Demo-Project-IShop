@@ -36,6 +36,14 @@ const Schema = mongoose.Schema({
     status: {
         type : Boolean,
         default : true
+    },
+    brandName: {
+        type: String,
+        require: true
+    },
+    categoryName: {
+        type: String,
+        require: true
     }
 })
 /*---------------------------------------------------------*/

@@ -1,7 +1,7 @@
 /*---------------------------------------------------------*/
 import { ProductModel } from "../Model/ProductModel.js";
 import { dirName } from "../dirName.js";
-import path from "path";
+import path, { resolve } from "path";
 /*---------------------------------------------------------*/
 class ProductController{
     /*---------------------------------------------------------*/
@@ -18,7 +18,7 @@ class ProductController{
                         status: 0
                     })
                 })
-                if(Data.name == undefined || imgFile.name == undefined){
+                if(Data.name == undefined){
                     reject({
                         msg: "Data cannot be Created. Please try Again",
                         status: 0
@@ -158,6 +158,54 @@ class ProductController{
                     status: 0
                 })
             }
+        })
+    }
+    /*---------------------------------------------------------*/
+    joinCategory = ()=>{
+        return new Promise(async(resolve , reject)=>{
+            ProductModel.aggregate([{
+                $lookup:{
+                    from: "categories",
+                    localField: "categoryName",
+                    foreignField: "name",
+                    as: "categoryDetails"
+                }
+            }]).then((success)=>{
+                resolve({
+                    msg: "Data Joined Successfully",
+                    success,
+                    status: 1
+                })
+            }).catch((error)=>{
+                reject({
+                    msg: "Data can't be Joined",
+                    status: 0
+                })
+            })
+        })
+    }
+    /*---------------------------------------------------------*/
+    joinBrand = ()=>{
+        return new Promise(async(resolve , reject)=>{
+            ProductModel.aggregate([{
+                $lookup:{
+                    from: "brands",
+                    localField: "brandName",
+                    foreignField: "name",
+                    as: "brandDetails"
+                }
+            }]).then((success)=>{
+                resolve({
+                    msg: "Data Joined Successfully",
+                    success,
+                    status: 1
+                })
+            }).catch((error)=>{
+                reject({
+                    msg: "Data can't be Joined",
+                    status: 0
+                })
+            })
         })
     }
     /*---------------------------------------------------------*/

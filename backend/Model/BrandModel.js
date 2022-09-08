@@ -24,11 +24,7 @@ const Schema = mongoose.Schema({
     updated_at: {
         type: Date,
         default: Date.now()
-    },
-    slug: {
-        type: String , 
-        unique: false
-    } 
+    }
 })
 /*---------------------------------------------------------*/
 const BrandModel = mongoose.model("Brand", Schema);
