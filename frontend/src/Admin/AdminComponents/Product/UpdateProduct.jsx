@@ -4,57 +4,67 @@ import { useEffect } from 'react';
 import { useSelector } from 'react-redux/es/exports';
 import { useParams } from 'react-router-dom'
 import Dropzone from '../Dropzone'
+import swal from 'sweetalert'
+import { useNavigate } from 'react-router-dom'
 
 export default function UpdateProduct() {
-          const Selector = useSelector((data)=> data.Reducer1)
-          const [img, setImg] = useState("")
-          const param = useParams();
-          const id = param.id;
-          async function fetchData(){
-              await axios.get(`http://localhost:5000/admin-panel/products/update/${id}`, {
+    const Navigate = useNavigate(); 
+    const Selector = useSelector((data)=> data.Reducer1)
+    const [img, setImg] = useState("")
+    const param = useParams();
+    const id = param.id;
+    async function fetchData(){
+        await axios.get(`http://localhost:5000/admin-panel/products/update/${id}`, {
+            headers: {
+              authorization: Selector
+            }
+        }).then((success) => {
+            console.log(success)
+            // setData(success.data.data);
+        }).catch((error) => {
+            console.log(error)
+        })
+    }
+    useEffect(()=>{
+        fetchData()
+    },[])
+    function getValue(x) {
+        setImg(x)
+    }
+    function formHandler(event){
+              const name = event.target.name.value;
+              const details = event.target.details.value;
+              const price = event.target.price.value;
+              const discount = event.target.discount.value;
+              const weight = event.target.weight.value;
+              const dataS = new FormData();
+              dataS.append("name", name)
+              dataS.append("details", details)
+              dataS.append("price", price)
+              dataS.append("discount", discount)
+              dataS.append("weigth", weight)
+              dataS.append("image", img)
+              axios.put(`http://localhost:5000/admin-panel/products/update/${id}`,
+              dataS,
+              {
                   headers: {
-                    authorization: Selector
+                      authorization: Selector
                   }
-              }).then((success) => {
-                  console.log(success)
-                  // setData(success.data.data);
-              }).catch((error) => {
-                  console.log(error)
-              })
+              }).then((success)=>{
+                //console.log(success)
+                swal({
+                  title: "Success",
+                  text: success.data.msg,
+                  icon: "success",
+                  button: "ok",
+                });
+              Navigate("/admin-panel/products/view")
+            }).catch((error) => {
+                console.log(error)
+            })
+              event.preventDefault();
           }
-          useEffect(()=>{
-              fetchData()
-          },[])
-          function getValue(x) {
-              setImg(x)
-          }
-          function formHandler(event){
-                    const name = event.target.name.value;
-                    const details = event.target.details.value;
-                    const price = event.target.price.value;
-                    const discount = event.target.discount.value;
-                    const weight = event.target.weight.value;
-                    const dataS = new FormData();
-                    dataS.append("name", name)
-                    dataS.append("details", details)
-                    dataS.append("price", price)
-                    dataS.append("discount", discount)
-                    dataS.append("weigth", weight)
-                    dataS.append("image", img)
-                    axios.put(`http://localhost:5000/admin-panel/products/update/${id}`,
-                    dataS,
-                    {
-                        headers: {
-                            authorization: Selector
-                        }
-                    }).then((success)=>{
-                      console.log(success)
-                  }).catch((error) => {
-                      console.log(error)
-                  })
-                    event.preventDefault();
-                }
-         return (
+    return (
           <>
           <div className=' flex border-b-2 justify-between px-4 py-2'> 
           <div className=' h-14 text-2xl flex items-center justify-center text-gray-700 '> Update Products</div>  
@@ -66,19 +76,19 @@ export default function UpdateProduct() {
             <tbody>
               <tr className='h-16'>
                 <td>Product Name</td>
-                <td><input type="text" name='name' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" /> </td>
+                <td><input type="text" name='name' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/> </td>
               </tr>
               <tr className='h-16'>
                 <td className='flex items-start'>Description</td>
-                <td><textarea type="text" name='details' className="border border-slate-400  w-96 h-24 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" /></td>
+                <td><textarea type="text" name='details' className="border border-slate-400  w-96 h-24 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/></td>
               </tr>
               <tr className='h-14'>
                 <td>Price</td>
-                <td><input type="number" name='price' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" /></td>
+                <td><input type="number" name='price' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/></td>
               </tr>
               <tr className='h-14'>
                 <td>Discount</td>
-                <td><input type="number" name='discount' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" /></td>
+                <td><input type="number" name='discount' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required /></td>
               </tr>
               <tr className='h-14'>
                 <td>weight</td>

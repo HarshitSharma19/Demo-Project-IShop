@@ -67,7 +67,7 @@ export default function UpdateBrand() {
                         <tr className='h-16'>
                             <td className='w-48'>Name</td>
                             <td>
-                                <input type="text" className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" name='name' />
+                                <input type="text" className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" name='name' required />
                             </td>
                         </tr>
                         <tr className='h-26 border-b-2'>

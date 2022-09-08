@@ -3,19 +3,28 @@ import StatusBtn from './StatusBtn'
 import HomepageBtn from './HomepageBtn'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
+import swal from 'sweetalert'
 import { useSelector } from 'react-redux/es/exports'
+
+
 export default function ProductList({sno , id , name , image , url , status , home, price , discount , weight , details, event }) {
- 
+  const Selector = useSelector((data)=> data.Reducer1)
+
   function Delete(x){
-    const Selector = useSelector((data)=> data.Reducer1)
      axios.delete(`http://localhost:5000/admin-panel/products/view/${x}`,{
       headers: {
         authorization: Selector
       }
      }
      ).then((success)=>{
-      console.log(success)
+     // console.log(success)
       event(success.data)
+      swal({
+        title: "Success",
+        text: success.data.msg,
+        icon: "success",
+        button: "ok",
+      })
     }).catch((error)=>{
       console.log(error)
     })
@@ -24,10 +33,10 @@ export default function ProductList({sno , id , name , image , url , status , ho
   return (
     <tr className=' border-b  '>
       <td>{sno+1}</td>
-      <td colSpan={2}>{name}</td>
-      <td>{details}</td>
+      <td>{name}</td>
+      <td colSpan={2}>{details}</td>
       <td className='flex justify-center items-center'><img className='mt-2 mb-2 w-[115px] h-[75px]' src={url+image} alt="" /></td>
-      <td>{price}</td>
+      <td>{price}</td>  
       <td>{discount}</td>
       <td>{weight}</td>
       <td><StatusBtn  flag={status} id={id} key={id}/></td>

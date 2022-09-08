@@ -54,8 +54,8 @@ export default function ViewProducts() {
         <thead className='border-b-2 '>
           <tr className='h-12 text-slate-700 font-semibold text-md'>
             <td>S.No</td>
-            <td colSpan={2}>Name</td>
-            <td>Description</td>
+            <td>Name</td>
+            <td colSpan={2}>Description</td>
             <td>Image</td>
             <td>Price</td>
             <td>Discount</td>
