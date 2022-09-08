@@ -11,6 +11,14 @@ export default function UpdateProduct() {
     const Navigate = useNavigate(); 
     const Selector = useSelector((data)=> data.Reducer1)
     const [img, setImg] = useState("")
+    const [data, setData]=useState([])
+    const [cdata, setCdata]=useState([])
+    const Sdata = data.map((a,i)=>{
+      return <option value={a.name} key={i}>{a.name}</option>
+    })
+    const Cdata = cdata.map((a,i)=>{
+      return <option value={a.name} key={i}>{a.name}</option>
+    })
     const param = useParams();
     const id = param.id;
     async function fetchData(){
@@ -64,7 +72,34 @@ export default function UpdateProduct() {
             })
               event.preventDefault();
           }
-    return (
+          const selectData = async() =>{
+            await axios.get("http://localhost:5000/admin-panel/brand/view",{
+              headers: {
+                authorization: Selector
+              }
+            })
+            .then((success)=>{
+              setData(success.data.data)
+            }).catch((error)=>{
+              console.log(error)
+            })
+            await axios.get("http://localhost:5000/admin-panel/category/view",{
+              headers: {
+                authorization: Selector
+              }
+            })
+            .then((success)=>{
+              setCdata(success.data.data)
+            }).catch((error)=>{
+              console.log(error)
+            })
+          }
+        
+         useEffect(()=>{
+           selectData()
+         },[])
+         
+         return (
           <>
           <div className=' flex border-b-2 justify-between px-4 py-2'> 
           <div className=' h-14 text-2xl flex items-center justify-center text-gray-700 '> Update Products</div>  
@@ -94,22 +129,20 @@ export default function UpdateProduct() {
                 <td>weight</td>
                 <td><input type="number" name='weight' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" /></td>
               </tr>
-              {/* <tr className='h-28'>
+              <tr className='h-28'>
                 <td> 
-                  <select className="w-56 h-8 text-center rounded-md border">
-                    <option value="">--Brand--</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="General Question">General</option>
+                  <select name='brand' className="w-56 h-8 text-center rounded-md border text-black">
+                    <option>Select Brand</option>
+                    {Sdata}
                   </select>
                 </td>
                 <td>
-                  <select className="w-56 h-8 text-center rounded-md border">
-                    <option value="">--Categories--</option>
-                    <option value="Partnership">Partnership</option>
-                    <option value="General Question">General</option>
+                  <select name='category' className="w-56 h-8 text-center rounded-md border ">
+                    <option>Select Brand</option>
+                    {Cdata}
                   </select>
                 </td>
-              </tr> */}
+              </tr>
               <tr className='h-26 border-b-2'>
                 <td className='flex items-start mt-4'>Upload Images</td>
                 <td className=' mt-6 pt-4 pb-20'><Dropzone event={getValue}/></td>

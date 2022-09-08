@@ -4,7 +4,7 @@ import { ProductController } from "../Controller/ProductController.js";
 /*---------------------------------------------------------*/
 
 const UserProductOperation = Express.Router();
- 
+
 /*READ Opr*/
 UserProductOperation.get("/alldata",async(req , res)=>{
     await new ProductController().getProduct().then((success)=>{
@@ -36,6 +36,24 @@ UserProductOperation.get("/ltdata",async(req , res)=>{
     })
 })
 /*READ Lt Opr*/
+
+/*READ JOIN Opr*/
+UserProductOperation.get("/categoryjoin",async(req , res)=>{
+    await new ProductController().joinCategory().then((success)=>{
+        res.send(success).status(200)
+    }).catch((error)=>{
+        res.send(error).status(400)
+    })
+})
+
+UserProductOperation.get("/brandjoin",async(req , res)=>{
+    await new ProductController().joinBrand().then((success)=>{
+        res.send(success).status(200)
+    }).catch((error)=>{
+        res.send(error).status(400)
+    })
+})
+/*READ JOIN Opr*/
 
 /*---------------------------------------------------------*/
 export { UserProductOperation };

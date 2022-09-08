@@ -13,10 +13,8 @@ import { AdminBrandOperation } from "./Routes/AdminBrandOperation.js"
 import { UserBrandOperation } from "./Routes/UserBrandOperation.js";
 import { UserCategoryOperation } from "./Routes/UserCategoryOperation.js";
 import { UserProductOperation } from "./Routes/UserProductOperation.js";
-/*-----*/
 import { dirName } from "./dirName.js";
 import path from "path";
-/*-----*/
 /*---------------------------------------------------------*/
 /*---------------------------------------------------------*/
 dotenv.config({
@@ -32,7 +30,7 @@ await mongoose.connect(process.env.DB).then(() => {
     console.log("Connection Error")
 })
 /*---------------------------------------------------------*/
-/*----------------------------------------------- ----------*/
+/*---------------------------------------------------------*/
 if (ConnStatus) {
     const App = Express();
     /*ADMIN LOGIN PENDING*/
@@ -41,7 +39,7 @@ if (ConnStatus) {
     }))
     // console.log(path.join(__dirname , "Public"))
     App.use(Express.static(path.join( dirName , "Public")))
-    App.use(cors())
+    App.use(cors({ origin: "*" }))
     App.use("/admin-panel", AdminLogin)
     /*ADMIN LOGIN DONE*/
 
@@ -54,8 +52,8 @@ if (ConnStatus) {
     /*USER LOGIN PENDING*/
     App.use("/user", UserLogin)
     App.use("/user/brand", UserBrandOperation)
-    App.use("/user/category", UserCategoryOperation) 
-    App.use("/user/product", UserProductOperation)
+    App.use("/user/category", UserCategoryOperation)
+    App.use("/user/products", UserProductOperation)
     /*USER LOGIN DONE*/
 
     App.listen(process.env.PORT, () => {
