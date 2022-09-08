@@ -32,7 +32,7 @@ await mongoose.connect(process.env.DB).then(() => {
     console.log("Connection Error")
 })
 /*---------------------------------------------------------*/
-/*---------------------------------------------------------*/
+/*----------------------------------------------- ----------*/
 if (ConnStatus) {
     const App = Express();
     /*ADMIN LOGIN PENDING*/
@@ -41,7 +41,7 @@ if (ConnStatus) {
     }))
     // console.log(path.join(__dirname , "Public"))
     App.use(Express.static(path.join( dirName , "Public")))
-    App.use(cors({ origin: "*" }))
+    App.use(cors())
     App.use("/admin-panel", AdminLogin)
     /*ADMIN LOGIN DONE*/
 
