@@ -3,8 +3,37 @@ import SideNav from "../Components/SideNav.jsx";
 import Card from "../Components/Card.jsx"
 import Banner from "../Components/Banner.jsx"
 import React from 'react'
+import axios from "axios";
+import { useState,useEffect } from "react";
 
 export default function Laptop() {
+  const [data , setData] = useState([]);
+  const [url , setUrl] = useState("")
+  let Data,filterData;
+  try{
+    filterData = data.filter((a)=>{
+      return a.categoryName == "Mobile"
+    })
+    Data = filterData.map((a, i)=>{
+      return <Card id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
+      }) 
+    }catch(error){
+    Data="NO DATA FOUND"
+  } 
+  
+  const fetchData = async() => {
+    await axios.get("http://localhost:5000/user/products/alldata", { 
+    }).then((success) => {
+      setUrl(success.data.imgBaseUrl)
+      setData(success.data.data);
+    }).catch((error) => {
+      console.log(error)
+    })
+  }
+
+  useEffect(() => {
+    fetchData()
+  }, [])
 return (
 <Container>
   <div className="flex">
@@ -15,7 +44,9 @@ return (
       <Banner />
       <h1 className=' text-center text-2xl font-bold my-5'>Laptop</h1>
       <hr />  
+      <div className='w-full flex flex-wrap justify-center mt-10'>
       <Card />
+      </div>
     </div>
   </div>
 </Container>

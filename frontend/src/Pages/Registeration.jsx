@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
 import axios from "axios"
 import Reg from '../Images/Reg.png'
+import swal from 'sweetalert';
+
 export default function Registeration() {
 
   const formHandler = (event) => {
@@ -16,6 +18,12 @@ export default function Registeration() {
         Password: password
       }).then((success) => { 
         console.log(success)
+        swal({
+          title: "Success",
+          text: success.data.msg ,
+          icon: "success",
+          button: "ok",
+        })
       }).catch((error) => {
         console.log(error)
       })

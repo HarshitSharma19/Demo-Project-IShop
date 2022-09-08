@@ -41,6 +41,7 @@ class UserController{
                         resolve({
                             msg : "Login Success",
                             email : dbData.Email,
+                            name: dbData.Name,
                             token : token,
                             status : 1
                         })
