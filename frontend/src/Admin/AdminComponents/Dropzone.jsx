@@ -8,7 +8,7 @@ export default function Dropzone(props){
   return (
     <>
       <div style={{display:"flex",flexDirection:"column",justifyContent:"space-around"}}>
-        <input type="file" value={props.img} onChange={(event)=>{fileHandler(event)}} ref={ref} required/>
+        <input type="file" value={props.img} onChange={(event)=>{fileHandler(event)}} ref={ref}/>
       </div>  
     </>
   )

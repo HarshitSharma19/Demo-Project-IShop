@@ -48,12 +48,21 @@ AdminCategoryOperation.get("/update/:id",async(req , res)=>{
 })
 AdminCategoryOperation.put("/update/:id",async(req , res)=>{
     const id = req.params.id;
-    const imageFile = req.files.image;
-    await new CategoryController().updateCategory(id , req.body , imageFile).then((success)=>{
-        res.send(success).status(200)
-    }).catch((error)=>{
-        res.send(error).status(400)
-    })
+    let imageFile;
+    try{
+        imageFile = req.files.image;
+        await new CategoryController().updateCategory(id , req.body , imageFile).then((success)=>{
+            res.send(success).status(200)
+        }).catch((error)=>{
+            res.send(error).status(400)
+        })
+    }catch(error){
+        await new CategoryController().updateCategory(id , req.body).then((success)=>{
+            res.send(success).status(200)
+        }).catch((error)=>{
+            res.send(error).status(400)
+        })
+    }
 })
 /*Update Opr*/
 

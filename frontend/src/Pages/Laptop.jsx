@@ -12,7 +12,7 @@ export default function Laptop() {
   let Data,filterData;
   try{
     filterData = data.filter((a)=>{
-      return a.categoryName == "Mobile"
+      return a.categoryName === "Laptop"
     })
     Data = filterData.map((a, i)=>{
       return <Card id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
@@ -45,7 +45,7 @@ return (
       <h1 className=' text-center text-2xl font-bold my-5'>Laptop</h1>
       <hr />  
       <div className='w-full flex flex-wrap justify-center mt-10'>
-      <Card />
+      {Data}
       </div>
     </div>
   </div>

@@ -17,11 +17,7 @@ export default function MainPage() {
   try{
 
     filterData = data.filter((a)=>{
-    return a.homepage==true   
-
-    Data = data.map((a, i)=>{
-    return <Card  id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
-
+    return a.homepage === true   
     })
     Data = filterData.map((a, i)=>{
       return <Card id={a._id} home={a.homepage} status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>

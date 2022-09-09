@@ -9,7 +9,6 @@ const Reducer2 = (state = init, Actions)=>{
             Final = {
                 userAuth : Actions.payload,
                 name: Actions.payload2,
-                reset:Actions.payload3
             }
             break;  
         default:

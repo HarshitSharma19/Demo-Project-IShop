@@ -47,12 +47,21 @@ AdminBrandOperation.get("/update/:id",async(req , res)=>{
 })
 AdminBrandOperation.put("/update/:id",async(req , res)=>{
     const id = req.params.id;
-    const imageFile = req.files.logo;
-    await new BrandController().updateBrand(id , req.body , imageFile).then((success)=>{
-        res.send(success).status(200)
-    }).catch((error)=>{
-        res.send(error).status(400)
-    })
+    let imageFile;
+    try{
+        imageFile = req.files.logo;
+        await new BrandController().updateBrand(id , req.body , imageFile).then((success)=>{
+            res.send(success).status(200)
+        }).catch((error)=>{
+            res.send(error).status(400)
+        })
+    }catch(error){
+        await new BrandController().updateBrand(id , req.body).then((success)=>{
+            res.send(success).status(200)
+        }).catch((error)=>{
+            res.send(error).status(400)
+        })
+    }
 })
 /*Update Opr*/
 

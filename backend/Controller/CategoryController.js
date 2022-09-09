@@ -104,23 +104,42 @@ class CategoryController {
     }
     updateCategory = (id, Data , imgFile) => {
         return new Promise(async (resolve, reject) => {
-            const Dir1 = path.join(dirName , "Public/Category/")
-            const imgName = Math.floor( Math.random() *1000000) + new Date().getTime() + imgFile.name
-            const destination = Dir1 + imgName;
-            const data = { ...Data , image: imgName }
-            try{
-                imgFile.mv(destination)
-                const saveData = await CategoryModel.findByIdAndUpdate(id, data)
-                saveData.save();
-                resolve({
-                    msg: "Data Updated Successfully",
-                    status: 1
-                })
-            }catch (error) {
-                reject({
-                    msg: "Data cannot be Updated",
-                    status: 0
-                })
+            if(imgFile == undefined){
+                const data = {
+                    name: Data.name
+                }
+                try{
+                    const saveData = await CategoryModel.findByIdAndUpdate(id , data)
+                    saveData.save();
+                    resolve({
+                        msg: "Data Updated Successfully",
+                        status: 1
+                    })
+                }catch(error){
+                    reject({
+                        msg: "Data cannot be Updated",
+                        status: 0
+                    })
+                }
+            }else{
+                const Dir1 = path.join(dirName , "Public/Category/")
+                const imgName = Math.floor(Math.random() * 100000) + new Date().getTime() + imgFile.name;
+                const destination = Dir1 + imgName;
+                const data = { ...Data , image: imgName }
+                try{
+                    imgFile.mv(destination)
+                    const saveData = await CategoryModel.findByIdAndUpdate(id , data)
+                    saveData.save();
+                    resolve({
+                        msg: "Data Updated Successfully",
+                        status: 1
+                    })
+                }catch(error){
+                    reject({
+                        msg: "Data cannot be Updated",
+                        status: 0
+                    })
+                }
             }
         })
     }

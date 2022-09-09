@@ -13,7 +13,7 @@ export default function Tablet() {
   let Data, filterData;
   try{
     filterData = data.filter((a)=>{
-      return a.categoryName == "Tablet"
+      return a.categoryName === "Tablet"
     })
     Data = filterData.map((a, i)=>{
       return <Card id={a._id}  status={a.status} key={i} sno={i} name={a.name} image={a.image} url={url} price={a.price} details={a.details} weight={a.weight} discount={a.discount}/>
