@@ -103,23 +103,46 @@ class ProductController{
     }
     updateProduct = (id , Data , imgFile)=>{
         return new Promise(async(resolve , reject)=>{
-            const Dir1 = path.join(dirName , "Public/Product/")
-            const imgName = Math.floor(Math.random() * 100000) + new Date().getTime() + imgFile.name;
-            const destination = Dir1 + imgName;
-            const data = { ...Data , image: imgName }
-            try{
-                imgFile.mv(destination)
-                const saveData = await ProductModel.findByIdAndUpdate(id , data)
-                saveData.save();
-                resolve({
-                    msg: "Data Updated Successfully",
-                    status: 1
-                })
-            }catch(error){
-                reject({
-                    msg: "Data cannot be Updated",
-                    status: 0
-                })
+            if(imgFile == undefined){
+                const data = {
+                    name: Data.name,
+                    details: Data.details,
+                    price: Data.price,
+                    discount: Data.discount,
+                    weight: Data.weight
+                }
+                try{
+                    const saveData = await ProductModel.findByIdAndUpdate(id , data)
+                    saveData.save();
+                    resolve({
+                        msg: "Data Updated Successfully",
+                        status: 1
+                    })
+                }catch(error){
+                    reject({
+                        msg: "Data cannot be Updated",
+                        status: 0
+                    })
+                }
+            }else{
+                const Dir1 = path.join(dirName , "Public/Product/")
+                const imgName = Math.floor(Math.random() * 100000) + new Date().getTime() + imgFile.name;
+                const destination = Dir1 + imgName;
+                const data = { ...Data , image: imgName }
+                try{
+                    imgFile.mv(destination)
+                    const saveData = await ProductModel.findByIdAndUpdate(id , data)
+                    saveData.save();
+                    resolve({
+                        msg: "Data Updated Successfully",
+                        status: 1
+                    })
+                }catch(error){
+                    reject({
+                        msg: "Data cannot be Updated",
+                        status: 0
+                    })
+                }
             }
         })
     }

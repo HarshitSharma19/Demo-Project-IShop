@@ -10,6 +10,13 @@ import { useNavigate } from 'react-router-dom'
 export default function UpdateProduct() {
     const Navigate = useNavigate(); 
     const Selector = useSelector((data)=> data.Reducer1)
+    const [data1 , setData1] = useState("")
+    const [data2 , setData2] = useState("")
+    const [data3 , setData3] = useState("")
+    const [data4 , setData4] = useState("")
+    const [data5 , setData5] = useState("")
+    const [data6 , setData6] = useState("")
+    const [data7 , setData7] = useState("")
     const [img, setImg] = useState("")
     const [data, setData]=useState([])
     const [cdata, setCdata]=useState([])
@@ -27,8 +34,14 @@ export default function UpdateProduct() {
               authorization: Selector
             }
         }).then((success) => {
-            console.log(success)
-            // setData(success.data.data);
+           const a= success.data.data;
+           setData1(a.name)
+           setData2(a.details)
+           setData3(a.price)
+           setData4(a.discount)
+           setData5(a.weight)
+           setData6(a.brandName)
+           setData7(a.categoryName)
         }).catch((error) => {
             console.log(error)
         })
@@ -111,34 +124,34 @@ export default function UpdateProduct() {
             <tbody>
               <tr className='h-16'>
                 <td>Product Name</td>
-                <td><input type="text" name='name' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/> </td>
+                <td><input value={data1} onChange={(event)=>{setData1(event.target.value)}} type="text" name='name' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/> </td>
               </tr>
               <tr className='h-16'>
                 <td className='flex items-start'>Description</td>
-                <td><textarea type="text" name='details' className="border border-slate-400  w-96 h-24 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/></td>
+                <td><textarea value={data2} onChange={(event)=>{setData2(event.target.value)}} type="text" name='details' className="border border-slate-400  w-96 h-24 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/></td>
               </tr>
               <tr className='h-14'>
                 <td>Price</td>
-                <td><input type="number" name='price' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/></td>
+                <td><input value={data3} onChange={(event)=>{setData3(event.target.value)}} type="number" name='price' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required/></td>
               </tr>
               <tr className='h-14'>
                 <td>Discount</td>
-                <td><input type="number" name='discount' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required /></td>
+                <td><input value={data4} onChange={(event)=>{setData4(event.target.value)}} type="number" name='discount' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" required /></td>
               </tr>
               <tr className='h-14'>
                 <td>weight</td>
-                <td><input type="number" name='weight' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" /></td>
+                <td><input value={data5} onChange={(event)=>{setData5(event.target.value)}}  type="number" name='weight' className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" /></td>
               </tr>
               <tr className='h-28'>
                 <td> 
-                  <select name='brand' className="w-56 h-8 text-center rounded-md border text-black">
+                  <select value={data6} onSelect={(event)=>{setData6(event.target.value)}} name='brand' className="w-56 h-8 text-center rounded-md border text-black">
                     <option>Select Brand</option>
                     {Sdata}
                   </select>
                 </td>
                 <td>
-                  <select name='category' className="w-56 h-8 text-center rounded-md border ">
-                    <option>Select Brand</option>
+                  <select value={data7} onSelect={(event)=>{setData7(event.target.value)}} name='category' className="w-56 h-8 text-center rounded-md border ">
+                    <option>Select Category</option>
                     {Cdata}
                   </select>
                 </td>

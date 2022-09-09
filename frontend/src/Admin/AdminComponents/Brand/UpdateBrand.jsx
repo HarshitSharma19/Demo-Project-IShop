@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router-dom';
 export default function UpdateBrand() {
     const Selector = useSelector((data)=>data.Reducer1)
     const Navigate = useNavigate();
-    // const [data , setData] = useState([])
+    const [data , setData] = useState("")
     const [img, setImg] = useState("")
     const param = useParams();
     const id = param.id;
@@ -19,7 +19,8 @@ export default function UpdateBrand() {
               authorization: Selector
             }
         }).then((success) => {
-            console.log(success)
+            const a = success.data.data
+            setData(a.name)
             // setData(success.data.data);
         }).catch((error) => {
             console.log(error)
@@ -67,7 +68,7 @@ export default function UpdateBrand() {
                         <tr className='h-16'>
                             <td className='w-48'>Name</td>
                             <td>
-                                <input type="text" className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" name='name' required />
+                                <input value={data} onChange={(event)=>{setData(event.target.value)}} type="text" className="border border-slate-400  w-96 h-8 focus:outline-none focus:ring-1 focus:ring-indigo-600 rounded-md" name='name' required />
                             </td>
                         </tr>
                         <tr className='h-26 border-b-2'>

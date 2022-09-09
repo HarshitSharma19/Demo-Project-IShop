@@ -5,12 +5,12 @@ const Actions = {
             payload: x   
         }
     } ,
-    userAuth: (x , y , z)=>{
+    userAuth: (x , y )=>{
         return{
             type:"USER",
             payload: x,
             payload2: y,
-            payload3: z
+          
         }
     }
 }

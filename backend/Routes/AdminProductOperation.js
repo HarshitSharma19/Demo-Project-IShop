@@ -47,12 +47,21 @@ AdminProductOperation.get("/update/:id",async(req , res)=>{
 })
 AdminProductOperation.put("/update/:id",async(req , res)=>{
     const id = req.params.id;
-    const imageFile = req.files.image;
-    await new ProductController().updateProduct(id , req.body , imageFile).then((success)=>{
-        res.send(success).status(200)
-    }).catch((error)=>{
-        res.send(error).status(400)
-    })
+    let imageFile;
+    try{
+        imageFile = req.files.image;
+        await new ProductController().updateProduct(id , req.body , imageFile).then((success)=>{
+            res.send(success).status(200)
+        }).catch((error)=>{
+            res.send(error).status(400)
+        })
+    }catch(error){
+        await new ProductController().updateProduct(id , req.body).then((success)=>{
+            res.send(success).status(200)
+        }).catch((error)=>{
+            res.send(error).status(400)
+        })
+    }
 })
 /*Update Opr*/
 
